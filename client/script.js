@@ -5,7 +5,7 @@ const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
 
 let loadInterval;
-
+let content = chatContainer;
 function loader(element) {
   element.textContent = "";
 
@@ -29,6 +29,9 @@ function typeText(element, text) {
       index++;
     } else {
       clearInterval(interval);
+      content = chatContainer.innerHTML;
+      localStorage.setItem("content", content);
+      console.log(content);
     }
   }, 20);
 }
@@ -67,7 +70,6 @@ const handleSubmit = async (e) => {
 
   // user's chatstripe
   chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
-
   // to clear the textarea input
   form.reset();
 
@@ -114,5 +116,36 @@ form.addEventListener("submit", handleSubmit);
 form.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     handleSubmit(e);
+  }
+});
+const btn = document.querySelectorAll(".prompt-btn > button");
+console.log(btn);
+let details = "";
+btn.forEach((e) => {
+  e.addEventListener("click", (e) => {
+    if (e.target.textContent === "NO") {
+      const data = localStorage.getItem("content");
+      let details = data;
+      chatContainer.innerHTML = details;
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      document.querySelector(".prompt").style.display = "none";
+    } else {
+      console.log(e.target.textContent);
+      localStorage.clear("content");
+      let details = "";
+      document.querySelector(".prompt").style.display = "none";
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("started server");
+  const data = localStorage.getItem("content");
+  console.log(data);
+  if (data?.length > 0) {
+    console.log("display");
+    document.querySelector(".prompt").style.display = "block";
+  } else {
+    console.log("nothing to display");
   }
 });
