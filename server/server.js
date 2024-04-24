@@ -64,5 +64,10 @@ app.post("/", async (req, res) => {
 
 app.listen(5000, () => {
   console.log("AI server started on http://localhost:5000");
-  console.log(process.env.OPENAI_API_KEY, process.env.port);
+  console.log(
+    process.env.OPENAI_API_KEY,
+    process.env.port,
+    process.env.PORT,
+    process.env.Port
+  );
 });
