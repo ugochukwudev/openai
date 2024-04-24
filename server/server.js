@@ -28,7 +28,7 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
   try {
     const prompt = req.body.prompt;
-
+    console.log(prompt);
     // const response = await openai.chat.completions
     //   .create({
     //     messages: [{ role: "system", content: "Hello GPT" }],
