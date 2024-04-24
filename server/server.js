@@ -46,7 +46,7 @@ app.post("/", async (req, res) => {
     //   frequency_penalty: 0.5, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
     //   presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     // });
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = await genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -57,7 +57,7 @@ app.post("/", async (req, res) => {
       bot: text,
     });
   } catch (error) {
-    //console.error(error);
+    console.error(error);
     res.status(500).send(error || "Something went wrong");
   }
 });
