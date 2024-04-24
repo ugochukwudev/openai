@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 dotenv.config();
 
 // const configuration = new Configuration({
-//   apiKey: "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",
+//   apiKey: "",
 // });
 
 //const openai = new OpenAIApi(configuration);
