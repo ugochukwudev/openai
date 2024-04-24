@@ -62,8 +62,10 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("AI server started on http://localhost:5000");
+app.listen(process.env.PORT || 5000, () => {
+  console.log(
+    `AI server started on ${process.env.PORT || "http://localhost:5000"}`
+  );
   console.log(
     process.env.OPENAI_API_KEY,
     process.env.port,
