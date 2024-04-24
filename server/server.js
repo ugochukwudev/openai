@@ -13,7 +13,6 @@ dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.OPENAI_API_KEY);
 // const openai = new OpenAI({
 //   apiKey:
-//     "sk-proj-MWsG8CNx4C2kiIMB8le5T3BlbkFJSSu4zgLnH2iUTuQb7OJM" ||
 //     process.env.OPENAI_API_KEY,
 // });
 const app = express();
